@@ -49,7 +49,7 @@ const StockHomeInventoryCard = () => {
 
   return (
     <>
-      {filteredData.map((item, index) => (
+      {filteredData.slice(0,3).map((item, index) => (
         <div className={styles.card} key={index}>
           <div className={styles.colorLineRed} />
           <div className={styles.icon}>
@@ -66,7 +66,7 @@ const StockHomeInventoryCard = () => {
       <Button
         onClick={() => {
           navigate({
-            to: `${window.getOpenmrsSpaBase()}stock-management/expired-stock`,
+            to: `${window.getOpenmrsSpaBase()}stock-management/stock-expired`,
           });
         }}
         kind="ghost"

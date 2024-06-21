@@ -12,6 +12,7 @@ import StockItems from "../stock-items/stock-items.component";
 import StockSettings from "../stock-settings/stock-settings.component";
 import StockLocations from "../stock-locations/stock-locations.component";
 import StockReports from "../stock-reports/report-list/stock-reports.component";
+import StockExpired from "../stock-expired/stock-expired.component";
 
 export default function StockManagementDashboard() {
   const basePath = `${window.getOpenmrsSpaBase()}stock-management`;
@@ -34,6 +35,8 @@ export default function StockManagementDashboard() {
             <Route path="stock-locations" element={<StockLocations />} />
             <Route path="stock-reports" element={<StockReports />} />
             <Route path="stock-settings" element={<StockSettings />} />
+            <Route path="stock-expired" element={<StockExpired />} />
+
           </Routes>
         </div>
         <Overlay />
