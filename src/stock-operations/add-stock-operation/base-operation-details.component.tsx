@@ -141,29 +141,32 @@ const BaseOperationDetails: React.FC<BaseOperationDetailsProps> = ({
         )}
 
         {canEdit && (
-          <Controller
-            control={control}
-            render={({ field: { onChange } }) => (
-              <DatePicker
-                datePickerType="single"
-                maxDate={formatForDatePicker(today())}
-                locale="en"
-                dateFormat={DATE_PICKER_CONTROL_FORMAT}
-                onChange={onChange}
-              >
-                <DatePickerInput
-                  invalid={!!errors.operationDate}
-                  invalidText={errors?.operationDate?.message}
-                  id="operationDate"
-                  name="operationDate"
-                  placeholder={DATE_PICKER_FORMAT}
-                  labelText={t("operationDate", "Operation Date")}
-                  value={formatForDatePicker(model?.operationDate)}
-                />
-              </DatePicker>
-            )}
-            name="operationDate"
-          />
+           <Controller
+           control={control}
+           name="operationDate"
+           render={({ field: { onChange, value } }) => (
+             <DatePicker
+               datePickerType="single"
+               maxDate={formatForDatePicker(today())}
+               locale="en"
+               dateFormat={DATE_PICKER_CONTROL_FORMAT}
+               onChange={([newDate]) => {
+                onChange(newDate);
+              }}
+             >
+               <DatePickerInput 
+                 invalid={!!errors.operationDate}
+                 invalidText={errors?.operationDate?.message}
+                 id="operationDate"
+                 name="operationDate"
+                 placeholder={DATE_PICKER_FORMAT}
+                 labelText={t("operationDate", "Operation Date")}
+                 defaultValue={formatForDatePicker(model?.operationDate)}
+
+               />
+             </DatePicker>
+           )}
+         />
         )}
 
         {!canEdit && (
